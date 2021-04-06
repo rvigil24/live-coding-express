@@ -5,8 +5,8 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const hbs = require("hbs");
 
-
 //import our routes
+const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");
 const contactRouter = require("./routes/contact");
@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //our routes go here
 app.use("/", indexRouter);
+app.use("/auth", authRouter);
 app.use("/about", aboutRouter);
 app.use("/contact", contactRouter);
 
