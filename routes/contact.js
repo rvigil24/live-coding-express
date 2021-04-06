@@ -7,7 +7,7 @@ const sendMail = require("../utils/email");
 
 //contact page
 router.get("/", (req, res, next) => {
-  res.render("contact", { title: "Any suggestion?" });
+  res.render("contact", { title: "Contact" });
 });
 
 //thank you page
@@ -22,7 +22,7 @@ router.post(
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.render("contact", {
-        title: "Any suggestion?",
+        title: "Any suggestion? 👋",
         name,
         email,
         message,

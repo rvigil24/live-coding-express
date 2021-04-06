@@ -4,7 +4,7 @@
     <a class="navbar-brand text-white" href="#">RT-Coding!</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navBarLiveCoding"
       aria-controls="navBarLiveCoding" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon" ></span>
+      <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- first block -->
@@ -12,25 +12,30 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
         <!-- home -->
+
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/">Home</a>
+          <a class="nav-link {{#if (isActiveLink title "Home")}}active{{/if}}" aria-current="page" href="/">Home</a>
         </li>
 
         <!-- about us -->
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/about">About us</a>
+          <a class="nav-link {{#if (isActiveLink title "About")}}active{{/if}}" aria-current="page" href="/about">About
+            us</a>
         </li>
 
         <!-- contact me -->
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="/contact">Contact us</a>
+          <a class="nav-link {{#if (isActiveLink title "Contact")}}active{{/if}}" aria-current="page"
+            href="/contact">Contact us</a>
         </li>
       </ul>
 
-      <!-- second block -->
+      <!-- auth -->
       <div class="text-end">
-        <a href="/auth/login" class="btn btn-outline-light me-2">Login</a>
-        <a href="/auth/register" class="btn btn-primary">Register</a>
+        <a href="/auth/login" class="btn btn-outline-light me-2 {{#if (isActiveLink title "Login")}}active{{/if}}">
+          Login
+        </a>
+        <a href="/auth/register" class="btn btn-outline-primary {{#if (isActiveLink title "Register")}}active{{/if}}">Register</a>
       </div>
     </div>
 
