@@ -17,7 +17,7 @@ async function sendMail(mailOptions) {
     const { name, email, message } = mailOptions;
     let info = await transporter.sendMail({
       from: `"${name} 👻" <${email}>`, // sender address
-      to: email, // receiver
+      to: "ruben.vigil24@gmail.com", // receiver
       subject: "You got a new message from RT-Coding ✔", // Subject line
       text: message, // plain text body
     });
