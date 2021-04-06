@@ -8,4 +8,8 @@ module.exports = {
       pass: process.env.mail_password || "p@ssw0rd",
     },
   },
+  db: {
+    connString:
+      process.env.db_connection || "mongodb:://127.0.0.1:27017/rt-coding",
+  },
 };
