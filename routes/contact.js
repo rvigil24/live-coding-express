@@ -1,10 +1,10 @@
 const express = require("express");
 const { body } = require("express-validator");
 const router = express.Router();
-const contactController = require("../controllers/pages/contact.controller");
+const { index, thankYou } = require("../controllers/pages/contact.controller");
 
 //contact page
-router.get("/", contactController.index);
+router.get("/", index);
 
 //thank you page
 router.post(
@@ -12,7 +12,7 @@ router.post(
   body("name", "name field is required").notEmpty(),
   body("email", "email field is required").isEmail(),
   body("message", "message is required").notEmpty(),
-  contactController.thankYou
+  thankYou
 );
 
 module.exports = router;
