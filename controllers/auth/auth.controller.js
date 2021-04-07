@@ -47,8 +47,9 @@ const registerUser = (req, res, next) => {
   user
     .save()
     .then((data) => {
-      return res.render("auth/login", {
-        title: "Login",
+      return req.login(user, (err) => {
+        if (err) return next(err);
+        return res.redirect("/");
       });
     })
     .catch((err) => {
