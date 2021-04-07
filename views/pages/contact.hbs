@@ -3,9 +3,7 @@
 
     <form class="mt-5 col-md-6 col-md-offset-3 mx-auto" method="post">
 
-        {{#each errors}}
-        <div class="alert alert-danger">{{this.msg}}</div>
-        {{/each}}
+        {{> errors}}
 
         <!-- name -->
         <div class="mb-3">
