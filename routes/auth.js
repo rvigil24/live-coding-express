@@ -49,4 +49,12 @@ router
     registerUser
   );
 
+router.get("/facebook", passport.authenticate("facebook", { scope: "email" }));
+router.get(
+  "/facebook/callback",
+  passport.authenticate("facebook", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+  })
+);
 module.exports = router;

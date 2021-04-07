@@ -17,6 +17,7 @@ const userSchema = new Schema({
   },
   hash: String,
   salt: String,
+  facebookId: String,
 });
 
 //define methods
