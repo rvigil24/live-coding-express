@@ -48,7 +48,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 app.use(passport.initialize());
 app.use(passport.session());
-require("./utils/passport")(passport);
+require("./lib/passport")(passport);
 
 app.use((req, res, next) => {
   if (req.isAuthenticated()) {

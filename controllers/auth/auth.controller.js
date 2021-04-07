@@ -1,6 +1,6 @@
 const { validationResult } = require("express-validator");
 const User = require("../../models/User");
-const { errorHandler } = require("../../utils/errors");
+const { errorHandler } = require("../../lib/errors");
 
 const getLoginPage = (req, res, next) => {
   res.render("auth/login", { title: "Login" });

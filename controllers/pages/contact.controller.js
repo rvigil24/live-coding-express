@@ -1,6 +1,6 @@
 //mailer
 const { validationResult } = require("express-validator");
-const sendMail = require("../../utils/email");
+const sendMail = require("../../lib/email");
 
 const index = (req, res, next) => {
   res.render("contact", { title: "Contact" });

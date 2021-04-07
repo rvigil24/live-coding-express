@@ -13,4 +13,7 @@ module.exports = {
       process.env.db_connection || "mongodb:://127.0.0.1:27017/rt-coding",
   },
   sessionKey: process.env.session_key || "$3cR3t",
+  facebook:{
+    
+  }
 };
