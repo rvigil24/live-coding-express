@@ -33,7 +33,16 @@
       <!-- auth -->
       <div class="text-end">
         {{#if user}}
-        <a href="/auth/logout" class="btn btn-outline-danger"> <i class="fas fa-sign-out-alt"></i> </a>
+        <div class="btn-group dropstart">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{user.name}}
+          </button>
+          <ul class="dropdown-menu">
+            <!-- Dropdown menu links -->
+            <li><a href="/auth/logout" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </ul>
+        </div>
         {{else}}
         <a href="/auth/login" class="btn btn-outline-light me-2 {{#if (isActiveLink title " Login")}}active{{/if}}">
           Login

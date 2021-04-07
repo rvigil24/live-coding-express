@@ -7,14 +7,14 @@
 
         <!-- name -->
         <div class="mb-3">
-            <label for="name" class="form-label">Your name</label>
+            <label for="name" class="form-label"><i class="fas fa-user"></i> Your name</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Your name goes here"
                 value={{name}}>
         </div>
 
         <!-- email address -->
         <div class="mb-3">
-            <label for="email" class="form-label">Your email address</label>
+            <label for="email" class="form-label"><i class="fas fa-envelope"></i> Your email address</label>
             <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp"
                 placeholder="Your email address goes here" value={{email}}>
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
@@ -22,10 +22,10 @@
 
         <!-- message -->
         <div class="mb-3">
-            <label for="message" class="form-label">Your message</label>
+            <label for="message" class="form-label"><i class="fas fa-comments"></i> Your message</label>
             <textarea class="form-control" name="message" id="message" rows="3">{{message}}</textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary">✉️ Send message</button>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send message</button>
     </form>
 </div>
