@@ -5,23 +5,29 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const hbs = require("hbs");
 
+//import mongoose and configuration
+const mongoose = require("mongoose");
+const config = require("./config");
+
 //import our routes
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");
 const contactRouter = require("./routes/contact");
 
+//lets connect mongoose
+mongoose.connect(config.db.connString)
 const app = express();
 
 // view engine setup, we are using handlebars this time
-
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views/pages"));
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
 hbs.registerHelper("isActiveLink", (val1, val2) => {
   return val1 === val2;
 });
 
+//our middlewares
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
