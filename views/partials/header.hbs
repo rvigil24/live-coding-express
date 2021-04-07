@@ -14,29 +14,35 @@
         <!-- home -->
 
         <li class="nav-item">
-          <a class="nav-link {{#if (isActiveLink title "Home")}}active{{/if}}" aria-current="page" href="/">Home</a>
+          <a class="nav-link {{#if (isActiveLink title " Home")}}active{{/if}}" aria-current="page" href="/">Home</a>
         </li>
 
         <!-- about us -->
         <li class="nav-item">
-          <a class="nav-link {{#if (isActiveLink title "About")}}active{{/if}}" aria-current="page" href="/about">About
+          <a class="nav-link {{#if (isActiveLink title " About")}}active{{/if}}" aria-current="page" href="/about">About
             us</a>
         </li>
 
         <!-- contact me -->
         <li class="nav-item">
-          <a class="nav-link {{#if (isActiveLink title "Contact")}}active{{/if}}" aria-current="page"
+          <a class="nav-link {{#if (isActiveLink title " Contact")}}active{{/if}}" aria-current="page"
             href="/contact">Contact us</a>
         </li>
       </ul>
 
       <!-- auth -->
       <div class="text-end">
-        <a href="/auth/login" class="btn btn-outline-light me-2 {{#if (isActiveLink title "Login")}}active{{/if}}">
+        {{#if user}}
+        <a href="/auth/logout" class="btn btn-outline-danger"> <i class="fas fa-sign-out-alt"></i> </a>
+        {{else}}
+        <a href="/auth/login" class="btn btn-outline-light me-2 {{#if (isActiveLink title " Login")}}active{{/if}}">
           Login
         </a>
-        <a href="/auth/register" class="btn btn-outline-primary {{#if (isActiveLink title "Register")}}active{{/if}}">Register</a>
+        <a href="/auth/register" class="btn btn-outline-primary {{#if (isActiveLink title "
+          Register")}}active{{/if}}">Register</a>
+        {{/if}}
       </div>
+
     </div>
 
 

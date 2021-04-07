@@ -1,6 +1,8 @@
-const mongoose,
-  { Schema } = require("mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 const crypto = require("crypto");
+const config = require("../config");
+const { buildSanitizeFunction } = require("express-validator");
 
 //define schema and attributes
 const userSchema = new Schema({
@@ -18,14 +20,16 @@ const userSchema = new Schema({
 });
 
 //define methods
-userSchema.methods.setPassword = (password) => {
+userSchema.methods.setPassword = function (password) {
   this.salt = crypto.randomBytes(16).toString("hex");
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, "sha1");
+  this.hash = crypto
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+    .toString("hex");
 };
 
-userSchema.methods.validPassword = (password) => {
+userSchema.methods.validPassword = function (password) {
   const hash = crypto
-    .pbkdf2Sync(password, this.salt, 1000, 64, "sha1")
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
     .toString("hex");
   return this.hash === hash;
 };

@@ -9,9 +9,15 @@ router.get("/", index);
 //thank you page
 router.post(
   "/",
-  body("name", "name field is required").notEmpty(),
-  body("email", "email field is required").isEmail(),
-  body("message", "message is required").notEmpty(),
+  body("name", "name field is required")
+    .isLength({ min: 5, max: 50 })
+    .trim()
+    .escape(),
+  body("email", "email field is required").isEmail().normalizeEmail(),
+  body("message", "message is required")
+    .isLength({ min: 5, max: 1000 })
+    .trim()
+    .escape(),
   thankYou
 );
 

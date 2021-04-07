@@ -1,35 +1,35 @@
 <div>
     <h1 class="text-center">{{title}}</h1>
 
-    <form class="col-md-6 offset-md-3 justify-content-end">
-
+    <form class="col-md-6 offset-md-3 justify-content-end" method="POST">
+        {{> errors}}
         <!-- name -->
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" value={{name}}>
         </div>
 
         <!-- email -->
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email" value={{email}}>
         </div>
 
         <!-- password -->
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" name="password">
+            <input type="password" class="form-control" id="password" name="password" value={{password}}>
         </div>
 
         <!-- confirm password -->
         <div class="mb-3">
-            <label for="confirm-password" class="form-label">Confirm password</label>
-            <input type="password" class="form-control" id="confirm-password" name="confirm-password">
+            <label for="confirm_password" class="form-label">Confirm password</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
         </div>
         <div class="mb-3 form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">
             <label class="form-check-label" for="exampleCheck1">Remember me</label>
         </div>
-        <button type="submit" class="btn btn-primary w-25">Register</button>
+        <button type="submit" class="btn btn-primary w-25 mb-5">Register</button>
     </form>
 </div>

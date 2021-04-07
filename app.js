@@ -4,10 +4,15 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const hbs = require("hbs");
+const passport = require("passport");
+const flash = require("connect-flash");
 
 //import mongoose and configuration
 const mongoose = require("mongoose");
 const config = require("./config");
+
+//import session
+const session = require("express-session");
 
 //import our routes
 const authRouter = require("./routes/auth");
@@ -16,7 +21,7 @@ const aboutRouter = require("./routes/about");
 const contactRouter = require("./routes/contact");
 
 //lets connect mongoose
-mongoose.connect(config.db.connString)
+mongoose.connect(config.db.connString);
 const app = express();
 
 // view engine setup, we are using handlebars this time
@@ -28,11 +33,29 @@ hbs.registerHelper("isActiveLink", (val1, val2) => {
 });
 
 //our middlewares
+app.use(flash());
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(
+  session({
+    secret: config.sessionKey,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 app.use(express.static(path.join(__dirname, "public")));
+app.use(passport.initialize());
+app.use(passport.session());
+require("./utils/passport")(passport);
+
+app.use((req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.locals.user = req.user;
+  }
+  next();
+});
 
 //our routes go here
 app.use("/", indexRouter);
