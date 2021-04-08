@@ -6,6 +6,15 @@
   --color-hover: lightblue;
 }
 
+.b-example-divider {
+  height: 3rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: solid rgba(0, 0, 0, 0.15);
+  border-width: 1px 0;
+  box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%),
+    inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+}
+
 /* ==========================================================================
   body 
 ========================================================================== */
@@ -13,6 +22,9 @@
   min-height: 100vh;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: var(--color-background);
+  font-family: var(--bs-font-sans-serif);
+
+  color: #212529;
 }
 
 /* ==========================================================================

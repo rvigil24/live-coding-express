@@ -1,11 +1,32 @@
-<div>
-    <h1 class="text-center">Welcome to RT-Coding</h1>
-    <p>Welcome</p>
-    {{#if user}}
-    <form action="/task" method="POST">
-        <button type="submit" class="btn btn-success">
-            <i class="fas fa-plus-circle"></i> Create Task
-        </button>
+<div class="container col-xxl-8 px-4 py-2">
+  {{#if user}}
+    <form action="/task" method="post">
+    <button type="submit">create task</button>
     </form>
-    {{/if}}
+  {{else}}
+  <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+    <div class="col-10 col-sm-8 col-lg-6">
+
+      <lottie-player width="700" height="500" loading="lazy" class="d-block mx-lg-auto img-fluid"
+        src="https://assets2.lottiefiles.com/packages/lf20_gb5bmwlm.json" background="transparent" speed="1"
+        style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    </div>
+    <div class="col-lg-6">
+      <h1 class="display-5 fw-bold lh-1 mb-3">RT-Coding</h1>
+      <p class="lead">This is a NodeJS project where you can share your code with other developers in real-time (using
+        SocketIO), also you can chat and activate your webcam. Ideal for code interviews. The project uses Express as a
+        Web Server.</p>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a href="/auth/login" class="btn btn-outline-dark col-md-4">
+          Login
+        </a>
+        <a href="/auth/register" class="btn btn-outline-primary col-md-4">Register</a>
+      </div>
+    </div>
+  </div>
 </div>
+{{/if}}
+
+{{#section 'script'}}
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+{{/section}}
