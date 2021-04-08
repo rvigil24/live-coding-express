@@ -1,4 +1,11 @@
 <div>
     <h1 class="text-center">Welcome to RT-Coding</h1>
     <p>Welcome</p>
+    {{#if user}}
+    <form action="/task" method="POST">
+        <button type="submit" class="btn btn-success">
+            <i class="fas fa-plus-circle"></i> Create Task
+        </button>
+    </form>
+    {{/if}}
 </div>

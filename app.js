@@ -20,6 +20,7 @@ const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
 const aboutRouter = require("./routes/about");
 const contactRouter = require("./routes/contact");
+const taskRouter = require("./routes/task");
 
 //lets connect mongoose
 mongoose.connect(config.db.connString);
@@ -63,6 +64,7 @@ app.use("/", indexRouter);
 app.use("/auth", authRouter);
 app.use("/about", aboutRouter);
 app.use("/contact", contactRouter);
+app.use("/task", taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -71,7 +73,6 @@ app.use(function (req, res, next) {
 
 //middleware for error handling
 app.use((err, req, res, next) => {
-  console.log("handling error");
   handleError(err, res);
 });
 
