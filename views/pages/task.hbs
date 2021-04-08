@@ -6,43 +6,46 @@
         </div>
         <div class="col-md-4" id="chatbox">
 
+            <div class="card card-primary">
+                <div class="card-header h6 d-flex justify-content-between">
+                    <span>Chatroom</span>
+                    <span id="chatbox-username">{{#if user}}{{user.name}}{{/if}}</span>
+                </div>
+                <div class="card-body" style="padding:0">
+
+                    <ul class="col-xs-12 list-group" style="overflow-y: auto;max-height:300px"
+                        id="chatbox-listMessages">
+                    </ul>
+
+                </div>
+                <div class="card-footer">
+                    <form>
+                        <div class="input-group input-group-sm">
+                            <input id="chatbox-userMessage" type="text" class="form-control"
+                                placeholder="Enter your message...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="submit" id="chatbox-sendButton"> <i
+                                        class="fas fa-paper-plane"></i> Send</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
+<input type="hidden" id="roomId" value={{roomId}} name="roomId">
 
 {{#section 'link'}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/theme/monokai.min.css"
-    integrity="sha512-R6PH4vSzF2Yxjdvb2p2FA06yWul+U0PDDav4b/od/oXf9Iw37zl10plvwOXelrjV2Ai7Eo3vyHeyFUjhXdBCVQ=="
-    crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/theme/monokai.min.css" />
 {{/section}}
 
 {{#section 'script'}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/codemirror.min.js"
-    integrity="sha512-hc0zo04EIwTzKLvp2eycDTeIUuvoGYYmFIjYx7DmfgQeZPC5N27sPG2wEQPq8d8fCTwuguLrI1ffatqxyTbHJw=="
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/keymap/sublime.min.js"
-    integrity="sha512-tKUdXq4laeUDT//Pnls3DjHSmGvX2u97cNFecqNWSLjcV+J0PKwjLFBQXcYxPx9ilaNcegMNo1c0hrpRGvy1kA=="
-    crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/mode/javascript/javascript.min.js"
-    integrity="sha512-isTDQTpVc8nKKMQmhm0b6fccRPjzo2g0q6l2VLy9/jDn5s8bEUu9WuSGkkAfN/NCwI3+Qi5wEVCaPRoWvT6YPw=="
-    crossorigin="anonymous"></script>
-<script src="https://codemirror.net/addon/hint/javascript-hint.js"></script>
-<script>
-
-    window.onload = function () {
-        var txtArea = document.getElementById("code-screen");
-        txtArea.classList.remove("d-none");
-        var myCodeMirror = CodeMirror.fromTextArea(txtArea, {
-            lineNumbers: true,
-            theme: "monokai",
-            extraKeys: { "Ctrl-Space": "autocomplete" },
-            autocorrect: true,
-            mode: { name: "javascript", globalVars: true },
-        })
-    }
-
-
-</script>
+<script src="https://cdn.socket.io/3.1.3/socket.io.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/keymap/sublime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.60.0/mode/javascript/javascript.min.js"></script>
+<script src="/javascripts/task.js"></script>
 {{/section}}

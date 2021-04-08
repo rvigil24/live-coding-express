@@ -47,7 +47,8 @@ const findOne = async (req, res, next) => {
       }
       return res.render("task", {
         title: "Task",
-        task,
+        data: task,
+        roomId: task.id
       });
     } catch (ex) {
       return next(
