@@ -30,6 +30,11 @@ const app = express();
 app.set("views", path.join(__dirname, "views/pages"));
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + "/views/partials");
+hbs.registerHelper("section", function (name, options) {
+  if (!this._sections) this._sections = {};
+  this._sections[name] = options.fn(this);
+  return null;
+});
 hbs.registerHelper("isActiveLink", (val1, val2) => {
   return val1 === val2;
 });
