@@ -10,6 +10,7 @@ const flash = require("connect-flash");
 //import mongoose and configuration
 const mongoose = require("mongoose");
 const config = require("./config");
+const { handleError } = require("./lib/errors");
 
 //import session
 const session = require("express-session");
@@ -66,6 +67,12 @@ app.use("/contact", contactRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
+});
+
+//middleware for error handling
+app.use((err, req, res, next) => {
+  console.log("handling error");
+  handleError(err, res);
 });
 
 // error handler

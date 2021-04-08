@@ -1,6 +1,6 @@
 const { validationResult } = require("express-validator");
 const User = require("../../models/User");
-const { errorHandler } = require("../../lib/errors");
+const { ErrorHandler } = require("../../lib/errors");
 
 const getLoginPage = (req, res, next) => {
   res.render("auth/login", { title: "Login" });
@@ -20,11 +20,17 @@ const loginUser = (req, res, next) => {
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.render("auth/login", {
-      title: "Login",
-      email,
-      errors: errors.array(),
-    });
+    const messageArray = errors.array().map((err) => err.msg);
+    return next(
+      new ErrorHandler({
+        title: "Register",
+        route: "auth/login",
+        messages: messageArray,
+        data: {
+          email,
+        },
+      })
+    );
   }
   next();
 };
@@ -33,12 +39,19 @@ const registerUser = (req, res, next) => {
   const { name, email, password } = req.body;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.render("auth/register", {
-      title: "Register",
-      name,
-      email,
-      errors: errors.array(),
-    });
+    const messageArray = errors.array().map((err) => err.msg);
+    return next(
+      new ErrorHandler({
+        title: "Register",
+        route: "auth/register",
+        messages: messageArray,
+        data: {
+          name,
+          email,
+          password,
+        },
+      })
+    );
   }
   const user = new User();
   user.name = name;
@@ -48,17 +61,36 @@ const registerUser = (req, res, next) => {
     .save()
     .then((data) => {
       return req.login(user, (err) => {
-        if (err) return next(err);
+        if (err)
+          return next(
+            new ErrorHandler({
+              title: "Register",
+              code: 10000,
+              route: "auth/register",
+              messages: ["User could not be created, please try again later"],
+              data: {
+                name,
+                email,
+                password,
+              },
+            })
+          );
         return res.redirect("/");
       });
     })
     .catch((err) => {
-      return res.render("auth/register", {
-        title: "Register",
-        name,
-        email,
-        errors: [errorHandler(err)],
-      });
+      return next(
+        new ErrorHandler({
+          title: "Register",
+          messages: [err.message],
+          route: "auth/register",
+          data: {
+            name,
+            email,
+            password,
+          },
+        })
+      );
     });
 };
 
