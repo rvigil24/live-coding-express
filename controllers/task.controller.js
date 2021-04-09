@@ -39,8 +39,8 @@ const findOne = async (req, res, next) => {
       if (!task) {
         return next(
           new ErrorHandler({
-            title: "Tasks",
-            route: "task",
+            title: "Home",
+            route: "",
             messages: ["Task not found"],
           })
         );

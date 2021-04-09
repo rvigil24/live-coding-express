@@ -54,8 +54,44 @@ navbar-toggler-icon {
   background-color: #3578e5;
 }
 
+/* ==========================================================================
+  Codemirror
+========================================================================== */
+.CodeMirror {
+  height: 600px;
+}
 
+/* ==========================================================================
+  Videos
+========================================================================== */
+#my-video {
+  margin: 0 auto;
+  margin-top: 15px;
+  width: 280px;
+  height: auto;
+  background-color: #eee;
+}
 
+#remote-video {
+  width: 100%;
+  height: 75%;
+  max-height: 480px;
+  background-color: #eee;
+}
+
+#video-container {
+  text-align: center;
+}
+
+#step1-error,
+#step2,
+#step3 {
+  /* display: none; */
+}
+
+#my-id {
+  font-weight: bold;
+}
 
 /* ==========================================================================
   footer

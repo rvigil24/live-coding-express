@@ -18,7 +18,6 @@ const session = require("express-session");
 //import our routes
 const authRouter = require("./routes/auth");
 const indexRouter = require("./routes/index");
-const aboutRouter = require("./routes/about");
 const contactRouter = require("./routes/contact");
 const taskRouter = require("./routes/task");
 
@@ -67,7 +66,6 @@ app.use((req, res, next) => {
 //our routes go here
 app.use("/", indexRouter);
 app.use("/auth", authRouter);
-app.use("/about", aboutRouter);
 app.use("/contact", contactRouter);
 app.use("/task", taskRouter);
 

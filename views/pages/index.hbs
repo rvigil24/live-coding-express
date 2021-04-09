@@ -3,10 +3,9 @@
   <div class="p-5 mb-4 bg-light rounded-3">
     <div class="container-fluid py-5">
       <h1 class="display-5 fw-bold">Create a Task</h1>
-      <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous
-        versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+      <p class="col-md-8 fs-4">Click on the button and share the link with with your friends and colleagues.</p>
       <form action="/task" method="post">
-        <button class="btn btn-success btn-lg" type="submit"><i class="fas fa-plus-circle"></i> create task</button>
+        <button class="btn btn-primary btn-lg" type="submit"><i class="fas fa-plus-circle"></i> Share code now</button>
       </form>
     </div>
 
@@ -20,15 +19,15 @@
         style="width: 300px; height: 300px;" loop autoplay></lottie-player>
     </div>
     <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">RT-Coding</h1>
-      <p class="lead">This is a NodeJS project where you can share your code with other developers in real-time (using
-        SocketIO), also you can chat and activate your webcam. Ideal for code interviews. The project uses Express as a
-        Web Server.</p>
+      <h1>Chat and share your code with other developers in real-time.</h1>
+      <p class="lead">Ideal for code interviews, troubleshooting, teaching and more. This project uses Express as a Web
+        Server and
+        Operational Transformation for Collaborative Editing.</p>
       <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a href="/auth/login" class="btn btn-outline-dark col-md-4">
-          Login
-        </a>
-        <a href="/auth/register" class="btn btn-outline-primary col-md-4">Register</a>
+        <form action="/task" method="post">
+          <button class="btn btn-primary btn-lg" type="submit"><i class="fas fa-plus-circle"></i> Share code
+            now</button>
+        </form>
       </div>
     </div>
   </div>

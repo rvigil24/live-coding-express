@@ -1,6 +1,5 @@
-window.onload = function () {
+window.onload = (function () {
   //************* variables
-
   var EditorClient = ot.EditorClient;
   var SocketIOAdapter = ot.SocketIOAdapter;
   var CodeMirrorAdapter = ot.CodeMirrorAdapter;
@@ -27,7 +26,9 @@ window.onload = function () {
   getUser();
 
   function init(str, revision, clients, serverAdapter) {
-    codeMirrorEditor.setValue(str);
+    if (editorTxtArea.value === "") {
+      codeMirrorEditor.setValue(str);
+    }
     cmClient = window.cmClient = new EditorClient(
       revision,
       clients,
@@ -69,12 +70,14 @@ window.onload = function () {
   }
 
   //************* events
+  chatboxSendButton.addEventListener("click", sendMessage);
+
+  //sockets
+  socket.emit("joinRoom", { room: roomId.value, username: getUser() });
   socket.on("chatMessage", function (data) {
     chatboxListMessages.append(userMessage(data.username, data.message));
   });
   socket.on("doc", function (obj) {
     init(obj.str, obj.revision, obj.clients, new SocketIOAdapter(socket));
   });
-  socket.emit("joinRoom", { room: roomId.value, username: getUser() });
-  chatboxSendButton.addEventListener("click", sendMessage);
-};
+})();
