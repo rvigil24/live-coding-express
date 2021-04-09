@@ -45,10 +45,11 @@ const findOne = async (req, res, next) => {
           })
         );
       }
+      const { content } = task;
       return res.render("task", {
         title: "Task",
-        data: task,
-        roomId: task.id
+        roomId: task._id,
+        content,
       });
     } catch (ex) {
       return next(

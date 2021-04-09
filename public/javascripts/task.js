@@ -1,7 +1,13 @@
 window.onload = function () {
   //************* variables
+
+  var EditorClient = ot.EditorClient;
+  var SocketIOAdapter = ot.SocketIOAdapter;
+  var CodeMirrorAdapter = ot.CodeMirrorAdapter;
+  var cmClient;
+
   var socket = io.connect("http://localhost:3000");
-  var txtArea = document.getElementById("code-screen");
+  var editorTxtArea = document.getElementById("code-screen");
   var roomId = document.getElementById("roomId");
   var chatboxUsername = document.getElementById("chatbox-username");
   var chatboxMessageBox = document.getElementById("chatbox-userMessage");
@@ -9,14 +15,26 @@ window.onload = function () {
   var chatboxSendButton = document.getElementById("chatbox-sendButton");
 
   //************* functions
-  var myCodeMirror = CodeMirror.fromTextArea(txtArea, {
+  var codeMirrorEditor = CodeMirror.fromTextArea(editorTxtArea, {
     lineNumbers: true,
     theme: "monokai",
     extraKeys: { "Ctrl-Space": "autocomplete" },
     autocorrect: true,
+    mode: { name: "javascript", json: true },
   });
-  txtArea.classList.remove("d-none");
+  editorTxtArea.classList.remove("d-none");
+
   getUser();
+
+  function init(str, revision, clients, serverAdapter) {
+    codeMirrorEditor.setValue(str);
+    cmClient = window.cmClient = new EditorClient(
+      revision,
+      clients,
+      serverAdapter,
+      new CodeMirrorAdapter(codeMirrorEditor)
+    );
+  }
 
   function getUser() {
     var user = chatboxUsername.innerHTML;
@@ -54,8 +72,9 @@ window.onload = function () {
   socket.on("chatMessage", function (data) {
     chatboxListMessages.append(userMessage(data.username, data.message));
   });
-
-  socket.emit("joinRoom", roomId.value);
-
+  socket.on("doc", function (obj) {
+    init(obj.str, obj.revision, obj.clients, new SocketIOAdapter(socket));
+  });
+  socket.emit("joinRoom", { room: roomId.value, username: getUser() });
   chatboxSendButton.addEventListener("click", sendMessage);
 };
