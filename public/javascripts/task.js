@@ -5,7 +5,7 @@ window.onload = (function () {
   var CodeMirrorAdapter = ot.CodeMirrorAdapter;
   var cmClient;
 
-  var socket = io.connect("http://localhost:3000");
+  var socket = io.connect("https://rt-coding.herokuapp.com");
   var editorTxtArea = document.getElementById("code-screen");
   var roomId = document.getElementById("roomId");
   var chatboxUsername = document.getElementById("chatbox-username");
