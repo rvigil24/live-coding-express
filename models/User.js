@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 const crypto = require("crypto");
-const config = require("../config");
 const { buildSanitizeFunction } = require("express-validator");
 
 //define schema and attributes

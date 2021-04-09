@@ -9,7 +9,7 @@ const flash = require("connect-flash");
 
 //import mongoose and configuration
 const mongoose = require("mongoose");
-const config = require("./config");
+require("dotenv").config();
 const { handleError } = require("./lib/errors");
 
 //import session
@@ -22,7 +22,7 @@ const contactRouter = require("./routes/contact");
 const taskRouter = require("./routes/task");
 
 //lets connect mongoose
-mongoose.connect(config.db.connString);
+mongoose.connect(process.env.DB_CONNECTION);
 const app = express();
 
 // view engine setup, we are using handlebars this time
@@ -46,7 +46,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   session({
-    secret: config.sessionKey,
+    secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true,
   })
