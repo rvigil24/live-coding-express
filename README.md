@@ -40,7 +40,7 @@ Verify you have installed and have the latest npm version.
    ```sh
    npm install
    ```
-3. Copy the file config.sample.js and rename it as config.js
+3. Copy the file .env.example and rename it as .env and enter the variables
 
 
 ## Usage
