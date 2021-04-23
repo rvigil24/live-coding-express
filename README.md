@@ -48,13 +48,6 @@ Verify you have installed and have the latest npm version.
 Click on the button "create task", copy the URL link and share it with your friends and colleagues.
 
 
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
-
-
 <!-- CONTRIBUTING -->
 ## Contributing
 
@@ -78,9 +71,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Ruben Vigil - [@uniquerubens](https://twitter.com/uniquerubens) - ruben.vigil24@gmail.com
+Ruben Vigil - [@uniqueruben](https://twitter.com/rubenvigil19) - ruben.vigil24@gmail.com
 
-Project Link: [https://github.com/rvigil24/live-coding-express](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/rvigil24/live-coding-express](https://github.com/rvigil24/live-coding-express)
 
 
 
